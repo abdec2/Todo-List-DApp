@@ -38,6 +38,10 @@ function App() {
   }
 
   const createTask = async (content) => {
+    if(!window.ethereum) {
+      alert('Please install MetaMask');
+      return
+    }
     try {
       setLoadingState('loading');
       const web3modal = new Web3Modal();
@@ -57,6 +61,10 @@ function App() {
   }
 
   const toggleStatus = async (e, id) => {
+    if(!window.ethereum) {
+      alert('Please install MetaMask');
+      return
+    }
     try {
       setLoadingState('loading');
       const web3modal = new Web3Modal();
@@ -76,6 +84,10 @@ function App() {
 
 
   const connectWallet = async () => {
+    if(!window.ethereum) {
+      alert('Please install MetaMask');
+      return
+    }
     const web3modal = new Web3Modal();
     const instance = await web3modal.connect();
     const provider = new ethers.providers.Web3Provider(instance);
@@ -93,7 +105,7 @@ function App() {
   }
 
   useEffect(() => {
-    if(window.ethereum.isMetaMask) {
+    if(window.ethereum && window.ethereum.isMetaMask) {
       FetchTodos()
     } else {
       alert('Please install MetaMask');
