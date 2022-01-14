@@ -5,7 +5,7 @@ coverage.json
 typechain
 frontend/node_modules
 
-
+frontend/build
 #Hardhat files
 cache
 artifacts
