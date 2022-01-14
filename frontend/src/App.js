@@ -93,7 +93,11 @@ function App() {
   }
 
   useEffect(() => {
-    FetchTodos()
+    if(window.ethereum.isMetaMask) {
+      FetchTodos()
+    } else {
+      alert('Please install MetaMask');
+    }
   }, []);
 
   if (loadingState === 'loading') return (
